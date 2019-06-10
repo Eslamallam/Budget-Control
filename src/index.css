@@ -13,6 +13,6 @@ code {
     monospace;
 }
 
-.is-active {
-  font-weight: bold;
+.navbar-nav {
+  text-align: center;
 }
