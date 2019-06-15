@@ -12,9 +12,15 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase
-  .database()
-  .ref()
-  .set({
-    name: "Eslam allam"
-  });
+const database = firebase.database();
+
+database.ref().set({
+  name: "Eslam allam",
+  age: 27,
+  location: {
+    city: "Cairo",
+    Country: "Egypt"
+  }
+});
+
+database.ref("age").set(26);
