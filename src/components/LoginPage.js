@@ -1,18 +1,25 @@
 import React from 'react';
 import { startLogin } from '../actions/auth';
 import { connect } from 'react-redux';
+import '../styles/loginPage.css';
 
 const LoginPage = ({ startLogin }) => {
 	return (
-		<div>
-			<h2>Login</h2>
-			<button onClick={startLogin}>Login</button>
+		<div className="loginPage">
+			<div className="logincard">
+				<button className="btn btn-lg btn-danger m-5" onClick={startLogin}>
+					Sign in with Google {"  "}
+					<span>
+						<i className="fa fa-google" aria-hidden="true" />
+					</span>
+				</button>
+			</div>
 		</div>
 	);
 };
 
 const mapDispatchToProps = dispatch => ({
-	startLogin:() => dispatch(startLogin())
+	startLogin: () => dispatch(startLogin()),
 });
 
 export default connect(

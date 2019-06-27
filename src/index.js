@@ -6,9 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import configureStore from './store/configureStore';
 import getVisibleExpenses from './selectors/expenses';
 import * as serviceWorker from './serviceWorker';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import { startSetExpenses } from './actions/expenses';
 import { firebase } from '../src/firebase/firebase';
+import { login, logout } from './actions/auth';
 
 const store = configureStore();
 
@@ -34,17 +35,29 @@ const Spinner = () => {
 	);
 };
 
-ReactDOM.render(<Spinner />, document.getElementById('root'));
+let hasRendered = false;
+const renderApp = () => {
+	if (!hasRendered) {
+		ReactDOM.render(<MyApp />, document.getElementById('root'));
+		hasRendered = true;
+	}
+};
 
-store.dispatch(startSetExpenses()).then(() => {
-	ReactDOM.render(<MyApp />, document.getElementById('root'));
-});
+ReactDOM.render(<Spinner />, document.getElementById('root'));
 
 firebase.auth().onAuthStateChanged(user => {
 	if (user) {
-		console.log('log in');
+		renderApp();
+		store.dispatch(login(user.uid));
+		store.dispatch(startSetExpenses()).then(() => {
+			if (history.location.pathname === '/') {
+				history.push('/dashboard');
+			}
+		});
 	} else {
-		console.log('log out');
+		renderApp();
+		store.dispatch(logout());
+		history.push('/');
 	}
 });
 
