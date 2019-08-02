@@ -7,8 +7,8 @@ const LoginPage = ({ startLogin }) => {
   return (
     <div className="loginPage">
       <div className="logincard">
-        <h1>Expensify</h1>
-        <button className="btn btn-lg btn-danger m-1" onClick={startLogin}>
+        <h1>Budget Control</h1>
+        <button className="btn btn-lg btn-danger" onClick={startLogin}>
           Sign in with Google {"  "}
           <span>
             <i className="fa fa-google" aria-hidden="true" />

@@ -33,9 +33,11 @@
 .logincard h1 {
   color: white;
   text-align: center;
+  padding: 10px;
 }
 
 .logincard button {
-  position: absolute;
+  position: relative;
   top: 40%;
+  margin: 20%;
 }
