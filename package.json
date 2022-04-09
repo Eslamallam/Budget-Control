@@ -8,7 +8,7 @@
     "express": "^4.17.1",
     "firebase": "^6.1.1",
     "history": "^4.9.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nivo": "^0.31.0",
     "numeral": "^2.0.6",
     "react": "^16.8.6",
